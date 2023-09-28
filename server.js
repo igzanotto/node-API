@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Product = require('./models/productModel')
+require('dotenv').config()
 
 const app = express()
 
@@ -84,7 +85,7 @@ app.delete('/products/:id', async (req, res) => {
 
 
 
-mongoose.connect('mongodb+srv://izanotto:Aa321321@db-node-api.ujgcq2x.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
     console.log('connected to mongoDB')
     app.listen(3000, ()=> {
